@@ -60,14 +60,14 @@ class Graph:
     """The Graph to model the skeletons.
 
     Args:
-        layout (str): must be one of the following candidates: 'wlasl_hrnet', 
+        layout (str): must be one of the following candidates: 'keypoint-27', 'keypoint-31', 'keypoint-49', 
         mode (str): must be one of the following candidates: 'stgcn_spatial', 'spatial'. Default: 'spatial'.
         max_hop (int): the maximal distance between two connected nodes.
             Default: 1
     """
 
     def __init__(self,
-                 layout='wlasl_hrnet',
+                 layout='keypoint-27',
                  mode='spatial',
                  max_hop=1,
                  nx_node=1,

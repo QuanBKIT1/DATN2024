@@ -14,6 +14,9 @@ Sign language is a complex communication system that utilizes hand gestures, bod
 
 3. **Incorporating Natural Language Knowledge**: Explore methods to incorporate natural language knowledge into sign language recognition to improve overall performance.
 
+
+
+
 ## Dataset Preparation
 
 WLASL Dataset HomePage: https://dxli94.github.io/WLASL/
