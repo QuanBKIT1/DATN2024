@@ -10,6 +10,7 @@ test_video.txt
 visualize_tmp/*
 
 # Ignore heavy directory
+.conda/*
 demo.ipynb
 work_dir/*
 save_models/*

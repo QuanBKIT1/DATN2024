@@ -29,9 +29,9 @@ Split 4 subsets $K=100,300,1000,2000$ . Statistics on training, validation and t
 | WLASL1000 | 1000  | 13168  | 13.17 | 8974  | 2318 | 1876 |
 | WLASL2000 | 2000  | 21083  | 10.53 | 14289 | 3916 | 2878 |
 
-| <center> Distribute the number of frames in each video </center>           | <center> Distribute the number of videos in each class </center>                |
-| -------------------------------------- | ------------------------------------------- |
-| ![Alt Text](./visualize/distribution_frame.png) | ![Alt Text](./visualize/distribution_video.png) |
+| <center> Distribute the number of frames in each video </center> | <center> Distribute the number of videos in each class </center> |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| ![Alt Text](./visualize/distribution_frame.png)                  | ![Alt Text](./visualize/distribution_video.png)                  |
 
 ## Data preprocessing
 
@@ -43,9 +43,9 @@ To experiment with different whole-body pose estimator, we use 2 version of RTMP
 
 | Pose estimator | Input size       | AP   | GFLOPs | Download                                                                                                                                       | Source                                                                                 |     |
 | -------------- | ---------------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --- |
-| RTMPose-l      | $256 \times 192$ | 62.1 | 4.52   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
+| RTMPose-l      | $256 \times 192$ | 63.1 | 4.52   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-l_simcc-ucoco_dw-ucoco_270e-256x192-4d6dfc62_20230728.zip) | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
 | HRNet-w48-Dark | $384\times 288$  | 66.1 | 35.52  | [pth](https://download.openmmlab.com/mmpose/top_down/hrnet/hrnet_w48_coco_wholebody_384x288_dark-f5726563_20200918.pth)                        | [MMPose](https://mmpose.readthedocs.io/en/latest/model_zoo/wholebody_2d_keypoint.html) |
-| RTMPose-l+     | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-l_simcc-ucoco_dw-ucoco_270e-256x192-4d6dfc62_20230728.zip) | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
+| RTMPose-l+     | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
 
 **Usage**
 
@@ -161,15 +161,29 @@ python training.py \
 
 ## Visualize result
 
-| <center> RGB video </center>           | <center> Skeleton video </center>                |
+| <center> RGB video </center>           | <center> Skeleton video </center>           |
 | -------------------------------------- | ------------------------------------------- |
 | ![Alt Text](./visualize/rgb_27175.gif) | ![Alt Text](./visualize/skeleton_27175.gif) |
 
+| <center> Top-5 Accuracy </center>        |
+| ---------------------------------------- |
+| ![Alt Text](./visualize/score_27175.png) |
 
-| <center> Top-5 Accuracy </center> |
-|---|
-|![Alt Text](./visualize/score_27175.png)|
+## Run demo
 
-<!-- ## Citations -->
+- Download library:
+
+```bash
+pip install -r requirements.txt
+```
+
+- Download ONNXRuntime Pose Estimator to `onnx_model/` folder. Extract and rename to `rtmpose-l.onnx` or `rtmw-l+.onnx`:
+
+| Pose estimator | Input size       | AP   | GFLOPs | Download                                                                                                                                       | Source                                                                        |     |
+| -------------- | ---------------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --- |
+| RTMPose-l      | $256 \times 192$ | 63.1 | 4.52   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-l_simcc-ucoco_dw-ucoco_270e-256x192-4d6dfc62_20230728.zip) | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose) |
+| RTMPose-l+     | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose) |
+
+- Run file `utils/webcam_demo.ipynb` to see visualizal results
 
 <!-- -- Update -->
