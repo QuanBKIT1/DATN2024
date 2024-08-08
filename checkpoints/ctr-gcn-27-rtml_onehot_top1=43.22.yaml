@@ -1,0 +1,54 @@
+Experiment_name: ctr-gcn
+base_lr: 0.1
+batch_size: 64
+eval_interval: 1
+feeder: feeder.feeder.Feeder
+model: model.ctrgcn.ctrgcn.Model
+model_args:
+  graph: graph.graph.Graph
+  graph_args:
+    layout: keypoint-27
+    mode: spatial
+  in_channels: 3
+  num_class: 2000
+  num_person: 1
+model_saved_dir: /kaggle/working/output/save_models
+nesterov: true
+num_epoch: 100
+num_worker: 2
+optimizer: SGD
+phase: train
+print_log: true
+save_interval: 20
+show_topk:
+  - 1
+start_epoch: 0
+t_max: 100
+test_batch_size: 64
+test_feeder_args:
+  data_path: /kaggle/input/skeleton-27-rtm-l-256-192/skeleton-27-rtm-l-256-192/test_data_joint.npy
+  label_path: /kaggle/input/skeleton-27-rtm-l-256-192/skeleton-27-rtm-l-256-192/test_label.pkl
+  max_xy: 256
+  normalization: true
+  random_mirror: false
+train_feeder_args:
+  data_path: /kaggle/input/skeleton-27-rtm-l-256-192/skeleton-27-rtm-l-256-192/train_data_joint.npy
+  is_vector: false
+  label_path: /kaggle/input/skeleton-27-rtm-l-256-192/skeleton-27-rtm-l-256-192/train_label.pkl
+  max_xy: 256
+  normalization: true
+  random_choose: true
+  random_mirror: true
+  random_mirror_p: 0.5
+  random_move: true
+  random_shift: true
+  window_size: 80
+val_feeder_args:
+  data_path: /kaggle/input/skeleton-27-rtm-l-256-192/skeleton-27-rtm-l-256-192/val_data_joint.npy
+  label_path: /kaggle/input/skeleton-27-rtm-l-256-192/skeleton-27-rtm-l-256-192/val_label.pkl
+  max_xy: 256
+  normalization: true
+  random_mirror: false
+weight_decay: 0.0005
+weights: 0
+work_dir: /kaggle/working/output/work_dir
