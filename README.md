@@ -1,8 +1,8 @@
 # Skeleton-approach for Sign Language Recognition on WLASL2000 dataset
 
-_Bachelor's Thesis 2024, Hanoi University of Science and Technology_
+_Bachelor's Thesis 2024, Hanoi University of Science and Technology 📖_
 
-_One love, one future_
+_One love, one future ❤️_
 
 ## Introduction
 
@@ -13,9 +13,6 @@ Sign language is a complex communication system that utilizes hand gestures, bod
 2. **Keypoint Selection Strategy for Graph Convolutional Networks**: Investigate effective strategies for selecting keypoints to enhance the performance of graph convolutional networks in sign language recognition.
 
 3. **Incorporating Natural Language Knowledge**: Explore methods to incorporate natural language knowledge into sign language recognition to improve overall performance.
-
-
-
 
 ## Dataset Preparation
 
@@ -31,6 +28,10 @@ Split 4 subsets $K=100,300,1000,2000$ . Statistics on training, validation and t
 | WLASL300  | 300   | 5117   | 17.06 | 3549  | 900  | 668  |
 | WLASL1000 | 1000  | 13168  | 13.17 | 8974  | 2318 | 1876 |
 | WLASL2000 | 2000  | 21083  | 10.53 | 14289 | 3916 | 2878 |
+
+| <center> Distribute the number of frames in each video </center>           | <center> Distribute the number of videos in each class </center>                |
+| -------------------------------------- | ------------------------------------------- |
+| ![Alt Text](./visualize/distribution_frame.png) | ![Alt Text](./visualize/distribution_video.png) |
 
 ## Data preprocessing
 
@@ -64,11 +65,10 @@ python genpose.py \
 - `SAVE_PATH`: The path to save output results (.pkl format for each video)
 
 Example run WHPE RTMW-l+:
+
 ```
 python genpose.py --onnx-path "D:\DATN\project\Pose-based-WLASL\onnx_model\rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.onnx" --video-data-path "D:\dataset\rgb_WLASL2000\WLASL2000" --device "cpu" --save-path "./keypoints_rtmpose_wholebody/"
 ```
-
-
 
 ### 2. Word Embeddings
 
@@ -125,40 +125,51 @@ python training.py \
 
 **Experiment 1:** Experimenting with different WHPEs on the WLASL2000 dataset, with 27 keypoints and the CTR-GCN model.
 
-|     WHPE      |   Input size    |  AP  | GFLOPs | Top-1 PI | Top-5 PI |
-| :-----------: | :-------------: | :--: | :----: | :------: | :------: |
-|   RTMPose-l   | $256\times 192$ | 61.1 |  4.52  |  43.22   |  75.92   |
-| HRNet-48-Dark | $384\times 288$ | 66.1 | 35.52  |  49.30   |  83.01   |
-|    RTMW-l+    | $384\times 288$ | 70.1 |  17.7  |  53.93   |  85.65   |
+|     WHPE      |   Input size    |  AP  | GFLOPs | Top-1 PI  | Top-5 PI  |
+| :-----------: | :-------------: | :--: | :----: | :-------: | :-------: |
+|   RTMPose-l   | $256\times 192$ | 61.1 |  4.52  |   43.22   |   75.92   |
+| HRNet-48-Dark | $384\times 288$ | 66.1 | 35.52  |   49.30   |   83.01   |
+|    RTMW-l+    | $384\times 288$ | 70.1 |  17.7  | **53.93** | **85.65** |
 
 **Experiment 2:** : Evaluating the impact of varying keypoint selections on the WLASL2000 dataset, using the RTMW-l+ WHPE with CTR-GCN model.
 
-| Keypoints | Top-1 PI | Top-5 PI | Top-1 PC | Top-5 PC |
-| :-------: | :------: | :------: | :------: | :------: |
-|    27     |  53.93   |  85.65   |  51.18   |  84.59   |
-|    31     |  54.20   |  86.76   |  51.78   |  85.90   |
-|    49     |  52.46   |  85.12   |  50.33   |  83.90   |
+| Keypoints | Top-1 PI  | Top-5 PI  | Top-1 PC  | Top-5 PC  |
+| :-------: | :-------: | :-------: | :-------: | :-------: |
+|    27     |   53.93   |   85.65   |   51.18   |   84.59   |
+|    31     | **54.20** | **86.76** | **51.78** | **85.90** |
+|    49     |   52.46   |   85.12   |   50.33   |   83.90   |
 
 **Experiment 3:** : Evaluating the impact of varying keypoint selections on the WLASL2000 dataset, using the WHPE RTMW-l+ with ST-GCN++ model.
 
-| Keypoints | Top-1 PI | Top-5 PI | Top-1 PC | Top-5 PC |
-| :-------: | :------: | :------: | :------: | :------: |
-|    27     |  53.09   |  85.20   |  50.88   |  84.40   |
-|    31     |  54.66   |  86.76   |  52.08   |  86.03   |
-|    49     |  52.15   |  84.78   |  49.62   |  83.84   |
+| Keypoints | Top-1 PI  | Top-5 PI  | Top-1 PC  | Top-5 PC  |
+| :-------: | :-------: | :-------: | :-------: | :-------: |
+|    27     |   53.09   |   85.20   |   50.88   |   84.40   |
+|    31     | **54.66** | **86.76** | **52.08** | **86.03** |
+|    49     |   52.15   |   84.78   |   49.62   |   83.84   |
 
 **Experiment 4:**: Evaluating the performance of original Label Smoothing and Natual Language-Assisted on the WLASL2000 dataset, using the WHPE RTMW-l+, the ST-GCN++ model, and 31 keypoints.
 
-| $\epsilon$ |   Type   | Top-1 PI | Top-5 PI | Top-1 PC | Top-5 PC |
-| :--------: | :------: | :------: | :------: | :------: | :------: |
-|     0      | One-hot  |  54.66   |  86.76   |  52.08   |  86.03   |
-|    0.1     | Vanilla  |  54.93   |  86.66   |  52.56   |  86.05   |
-|    0.1     | Language |  55.35   |  86.27   |  52.87   |  85.57   |
-|    0.2     | Vanilla  |  56.21   |  87.07   |  53.77   |  86.16   |
-|    0.2     | Language |  56.01   |  87.14   |  53.41   |  86.32   |
-|    0.3     | Vanilla  |  56.53   |  87.52   |  53.83   |  86.79   |
-|    0.3     | Language |  56.46   |  87.94   |  54.03   |  87.18   |
+| $\epsilon$ |   Type   | Top-1 PI  | Top-5 PI  | Top-1 PC  | Top-5 PC  |
+| :--------: | :------: | :-------: | :-------: | :-------: | :-------: |
+|     0      | One-hot  |   54.66   |   86.76   |   52.08   |   86.03   |
+|    0.1     | Vanilla  |   54.93   |   86.66   |   52.56   |   86.05   |
+|    0.1     | Language |   55.35   |   86.27   |   52.87   |   85.57   |
+|    0.2     | Vanilla  |   56.21   |   87.07   |   53.77   |   86.16   |
+|    0.2     | Language |   56.01   |   87.14   |   53.41   |   86.32   |
+|    0.3     | Vanilla  |   56.53   |   87.52   |   53.83   |   86.79   |
+|    0.3     | Language | **56.46** | **87.94** | **54.03** | **87.18** |
 
-## Citations
+## Visualize result
 
--- Update
+| <center> RGB video </center>           | <center> Skeleton video </center>                |
+| -------------------------------------- | ------------------------------------------- |
+| ![Alt Text](./visualize/rgb_27175.gif) | ![Alt Text](./visualize/skeleton_27175.gif) |
+
+
+| <center> Top-5 Accuracy </center> |
+|---|
+|![Alt Text](./visualize/score_27175.png)|
+
+<!-- ## Citations -->
+
+<!-- -- Update -->
