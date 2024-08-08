@@ -6,6 +6,8 @@ backup/*
 # *.pt
 *.caffemodel
 cache/
+test_video.txt
+visualize_tmp/*
 
 # Ignore heavy directory
 demo.ipynb
@@ -14,7 +16,8 @@ save_models/*
 onnx_model/*
 keypoints_rtmpose_wholebody/*
 video/*
-checkpoints/*
+# checkpoints/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
