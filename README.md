@@ -45,7 +45,7 @@ To experiment with different whole-body pose estimator, we use 2 version of RTMP
 | -------------- | ---------------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --- |
 | RTMPose-l      | $256 \times 192$ | 63.1 | 4.52   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-l_simcc-ucoco_dw-ucoco_270e-256x192-4d6dfc62_20230728.zip) | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
 | HRNet-w48-Dark | $384\times 288$  | 66.1 | 35.52  | [pth](https://download.openmmlab.com/mmpose/top_down/hrnet/hrnet_w48_coco_wholebody_384x288_dark-f5726563_20200918.pth)                        | [MMPose](https://mmpose.readthedocs.io/en/latest/model_zoo/wholebody_2d_keypoint.html) |
-| RTMPose-l+     | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
+| RTMW-l+     | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
 
 **Usage**
 
@@ -182,7 +182,7 @@ pip install -r requirements.txt
 | Pose estimator | Input size       | AP   | GFLOPs | Download                                                                                                                                       | Source                                                                        |     |
 | -------------- | ---------------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --- |
 | RTMPose-l      | $256 \times 192$ | 63.1 | 4.52   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-l_simcc-ucoco_dw-ucoco_270e-256x192-4d6dfc62_20230728.zip) | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose) |
-| RTMPose-l+     | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose) |
+| RTMW-l+     | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose) |
 
 - Run file `utils/webcam_demo.ipynb` to see visualizal results
 
