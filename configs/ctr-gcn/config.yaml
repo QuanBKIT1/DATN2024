@@ -8,10 +8,6 @@ num_worker: 2
 model_saved_dir: ./save_models/
 work_dir: ./work_dir/
 
-use_nla: False
-label_smoothing: 0
-word_embedding: D:\DATN\project\data\preprocessed_data\keypoints_NLA_WLASL\wlasl_word_embeddings.pkl
-vocab: D:\DATN\project\data\preprocessed_data\wlasl_class_list.txt
 
 # feeder
 feeder: feeder.feeder.Feeder
@@ -55,6 +51,12 @@ model_args:
   graph_args:
     layout: "keypoint-27"
     mode: "spatial"
+
+label_smoothing: 0
+# Add Label Smoothing with Natural Language Knowledge
+use_nla: False
+word_embedding: D:\DATN\project\data\preprocessed_data\keypoints_NLA_WLASL\wlasl_word_embeddings.pkl
+vocab: D:\DATN\project\data\preprocessed_data\wlasl_class_list.txt
 
 # training
 batch_size: 64
