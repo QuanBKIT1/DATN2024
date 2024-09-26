@@ -14,6 +14,8 @@ Sign language is a complex communication system that utilizes hand gestures, bod
 
 3. **Incorporating Natural Language Knowledge**: Explore methods to incorporate natural language knowledge into sign language recognition to improve overall performance.
 
+Proposed model is evaluated on the WLASL dataset, achieving an accuracy of **56.46%** on WLASL2000, surpassing recent studies that rely solely on skeleton input.
+
 ## Dataset Preparation
 
 WLASL Dataset HomePage: https://dxli94.github.io/WLASL/
@@ -43,9 +45,9 @@ To experiment with different whole-body pose estimator, we use 2 version of RTMP
 
 | Pose estimator | Input size       | AP   | GFLOPs | Download                                                                                                                                       | Source                                                                                 |     |
 | -------------- | ---------------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --- |
-| RTMPose-l      | $256 \times 192$ | 63.1 | 4.52   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-l_simcc-ucoco_dw-ucoco_270e-256x192-4d6dfc62_20230728.zip) | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
+| RTMPose-l      | $256 \times 192$ | 61.1 | 4.52   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-l_simcc-ucoco_dw-ucoco_270e-256x192-4d6dfc62_20230728.zip) | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
 | HRNet-w48-Dark | $384\times 288$  | 66.1 | 35.52  | [pth](https://download.openmmlab.com/mmpose/top_down/hrnet/hrnet_w48_coco_wholebody_384x288_dark-f5726563_20200918.pth)                        | [MMPose](https://mmpose.readthedocs.io/en/latest/model_zoo/wholebody_2d_keypoint.html) |
-| RTMW-l+     | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
+| RTMW-l+        | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose)          |
 
 **Usage**
 
@@ -156,7 +158,7 @@ python training.py \
 |    0.1     | Language |   55.35   |   86.27   |   52.87   |   85.57   |
 |    0.2     | Vanilla  |   56.21   |   87.07   |   53.77   |   86.16   |
 |    0.2     | Language |   56.01   |   87.14   |   53.41   |   86.32   |
-|    0.3     | Vanilla  |   56.53   |   87.52   |   53.83   |   86.79   |
+|    0.3     | Vanilla  |   56.33   |   87.52   |   53.83   |   86.79   |
 |    0.3     | Language | **56.46** | **87.94** | **54.03** | **87.18** |
 
 ## Visualize result
@@ -181,8 +183,8 @@ pip install -r requirements.txt
 
 | Pose estimator | Input size       | AP   | GFLOPs | Download                                                                                                                                       | Source                                                                        |     |
 | -------------- | ---------------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --- |
-| RTMPose-l      | $256 \times 192$ | 63.1 | 4.52   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-l_simcc-ucoco_dw-ucoco_270e-256x192-4d6dfc62_20230728.zip) | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose) |
-| RTMW-l+     | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose) |
+| RTMPose-l      | $256 \times 192$ | 61.1 | 4.52   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-l_simcc-ucoco_dw-ucoco_270e-256x192-4d6dfc62_20230728.zip) | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose) |
+| RTMW-l+        | $384\times 288$  | 70.1 | 17.7   | [onnx](https://download.openmmlab.com/mmpose/v1/projects/rtmw/onnx_sdk/rtmw-dw-x-l_simcc-cocktail14_270e-384x288_20231122.zip)                 | [RTMPose](https://github.com/open-mmlab/mmpose/tree/dev-1.x/projects/rtmpose) |
 
 - Run file `utils/webcam_demo.ipynb` to see visualizal results
 
